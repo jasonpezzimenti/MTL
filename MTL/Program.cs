@@ -23,17 +23,17 @@
 			bool isReady = false;
 
 			// Read the file passed to the application.
-			if(arguments.Length >= 1)
+			if (arguments.Length >= 1)
 			{
 				string filePath = arguments[0];
 
-				if(!String.IsNullOrEmpty(filePath))
+				if (!String.IsNullOrEmpty(filePath))
 				{
 					using (StreamReader reader = new StreamReader(filePath))
 					{
 						reader.BaseStream.Position = 0;
 
-						while(!reader.EndOfStream)
+						while (!reader.EndOfStream)
 						{
 							input += reader.ReadToEnd();
 						}
@@ -43,17 +43,17 @@
 				}
 			}
 
-			if(isReady)
+			if (isReady)
 			{
-				for(int index = 0; index < input.Length; index++)
+				for (int index = 0; index < input.Length; index++)
 				{
 					position = index;
 					character = input[position].ToString();
 
-					if(isInsideString)
+					if (isInsideString)
 					{
 						// If we find a double quote, we should consider this to be the end of the string.
-						if(character == MTL.Symbols.DoubleQuote)
+						if (character == MTL.Symbols.DoubleQuote)
 						{
 							MTL.Tokens.Push(new MTL.Token()
 							{
@@ -109,6 +109,10 @@
 									{
 										isExpectingString = true;
 									}
+									else if(text == "image")
+									{
+										isExpectingString = true;
+									}
 
 									isExpectingType = false;
 									isExpectingIdentifier = true;
@@ -151,7 +155,14 @@
 							}
 							else
 							{
-
+								//if (character != " " && character != "\t" && character != "\r" && character != "\n")
+								//{
+								//	MTL.Tokens.Push(new MTL.Token()
+								//	{
+								//		TokenType = MTL.Token.TokenTypes.Identifier,
+								//		Value = text
+								//	});
+								//}
 							}
 						}
 						else if (isExpectingIdentifier)
