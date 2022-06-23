@@ -8,9 +8,19 @@ namespace MTL
 {
 	public partial class MTL
 	{
-		public static List<string> Symbols = new List<string>()
+		public struct Symbols
 		{
-			
-		};
+			public string At = "@";
+			public string Hash = "#";
+			public string Asterisk = "*";
+			public string Hyphen = "-";
+			public string Plus = "+";
+			public string Colon = ":";
+			public string Semicolon = ";";
+
+			public Symbols()
+			{
+			}
+		}
 	}
 }
