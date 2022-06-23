@@ -17,6 +17,7 @@ namespace MTL
 			public static string Plus = "+";
 			public static string Colon = ":";
 			public static string Semicolon = ";";
+			public static string DoubleQuote = "\"";
 
 			public Symbols()
 			{

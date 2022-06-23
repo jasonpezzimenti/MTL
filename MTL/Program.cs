@@ -15,6 +15,7 @@
 			isExpectingString,
 			isExpectingScopeStart,
 			isExpectingScopeEnd;
+		public static int position = 0;
 
 		public static void Main(string[] arguments)
 		{
@@ -43,7 +44,17 @@
 
 			if(isReady)
 			{
-				
+				for(int index = 0; index < input.Length; index++)
+				{
+					position = index;
+					character = input[position].ToString();
+
+					if(isInsideString)
+					{
+						// If we find a double quote, we should consider this to be the end of the string.
+						
+					}
+				}
 			}
 		}
 	}
