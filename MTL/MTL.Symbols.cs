@@ -18,6 +18,8 @@ namespace MTL
 			public static string Colon = ":";
 			public static string Semicolon = ";";
 			public static string DoubleQuote = "\"";
+			public static string OpeningBrace = "{";
+			public static string ClosingBrace = "}";
 
 			public Symbols()
 			{

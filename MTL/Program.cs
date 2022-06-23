@@ -11,7 +11,7 @@
 			input = "";
 		public static bool isInsideString,
 			isInsideScope,
-			isExpectingType,
+			isExpectingType = true,
 			isExpectingIdentifier,
 			isExpectingString,
 			isExpectingScopeStart,
@@ -35,7 +35,7 @@
 
 						while(!reader.EndOfStream)
 						{
-							input += reader.Read();
+							input += reader.ReadToEnd();
 						}
 
 						isReady = true;
@@ -67,12 +67,175 @@
 								Value = MTL.Symbols.DoubleQuote
 							});
 
+							text = "";
+
 							isInsideString = false;
 							isExpectingScopeEnd = true;
 							isExpectingType = true;
+							isExpectingString = false;
+						}
+						else
+						{
+							text += character;
+						}
+					}
+					else
+					{
+						if (isExpectingType)
+						{
+							if (character == MTL.Symbols.ClosingBrace)
+							{
+								MTL.Tokens.Push(new MTL.Token()
+								{
+									TokenType = MTL.Token.TokenTypes.Symbol,
+									Value = MTL.Symbols.ClosingBrace
+								});
+
+								isExpectingType = true;
+								isExpectingIdentifier = false;
+								isExpectingScopeEnd = false;
+							}
+							else
+							{
+								if (MTL.Types.Contains(text))
+								{
+									MTL.Tokens.Push(new MTL.Token()
+									{
+										TokenType = MTL.Token.TokenTypes.Type,
+										Value = text
+									});
+
+									if (text == "text")
+									{
+										isExpectingString = true;
+									}
+
+									isExpectingType = false;
+									isExpectingIdentifier = true;
+
+									text = "";
+								}
+								else
+								{
+									if (character != " " && character != "\t" && character != "\r" && character != "\n")
+									{
+										text += character;
+									}
+								}
+							}
+						}
+						else if (isExpectingString)
+						{
+							if (character == MTL.Symbols.DoubleQuote)
+							{
+								MTL.Tokens.Push(new MTL.Token()
+								{
+									TokenType = MTL.Token.TokenTypes.Identifier,
+									Value = text
+								});
+
+								MTL.Tokens.Push(new MTL.Token()
+								{
+									TokenType = MTL.Token.TokenTypes.Symbol,
+									Value = MTL.Symbols.DoubleQuote
+								});
+
+								isExpectingScopeStart = true;
+								isExpectingScopeEnd = true;
+								isExpectingIdentifier = false;
+								isExpectingType = false;
+								isExpectingString = false;
+								isInsideString = true;
+
+								text = "";
+							}
+							else
+							{
+
+							}
+						}
+						else if (isExpectingIdentifier)
+						{
+							if (character == MTL.Symbols.OpeningBrace)
+							{
+								MTL.Tokens.Push(new MTL.Token()
+								{
+									TokenType = MTL.Token.TokenTypes.Identifier,
+									Value = text
+								});
+
+								MTL.Tokens.Push(new MTL.Token()
+								{
+									TokenType = MTL.Token.TokenTypes.Symbol,
+									Value = MTL.Symbols.OpeningBrace
+								});
+
+								isInsideScope = true;
+								isExpectingScopeStart = false;
+								isExpectingScopeEnd = true;
+								isExpectingIdentifier = false;
+								isExpectingType = true;
+
+								text = "";
+							}
+							else if (character == MTL.Symbols.DoubleQuote)
+							{
+								MTL.Tokens.Push(new MTL.Token()
+								{
+									TokenType = MTL.Token.TokenTypes.Identifier,
+									Value = text
+								});
+
+								MTL.Tokens.Push(new MTL.Token()
+								{
+									TokenType = MTL.Token.TokenTypes.Symbol,
+									Value = MTL.Symbols.DoubleQuote
+								});
+
+								isExpectingScopeStart = true;
+								isExpectingScopeEnd = true;
+								isExpectingIdentifier = false;
+								isExpectingType = false;
+
+								text = "";
+							}
+							else
+							{
+								if (character != " " && character != "\t" && character != "\r" && character != "\n")
+								{
+									text += character;
+								}
+							}
+						}
+						else
+						{
+							if (isExpectingScopeEnd)
+							{
+								if (character == MTL.Symbols.ClosingBrace)
+								{
+									MTL.Tokens.Push(new MTL.Token()
+									{
+										TokenType = MTL.Token.TokenTypes.Symbol,
+										Value = MTL.Symbols.ClosingBrace
+									});
+
+									isExpectingType = true;
+									isExpectingIdentifier = false;
+									isExpectingScopeEnd = false;
+								}
+								else
+								{
+
+								}
+							}
 						}
 					}
 				}
+			}
+
+			foreach (var token in MTL.Tokens.Reverse())
+			{
+				Console.WriteLine(token.Value);
 			}
 		}
 	}
