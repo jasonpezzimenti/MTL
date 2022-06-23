@@ -18,6 +18,8 @@ namespace MTL
 			}
 
 			public static TokenTypes TokenType { get; set; }
+
+			public string Value { get; set; }
 		}
 
 		public static Stack<Token> Tokens = new Stack<Token>();
