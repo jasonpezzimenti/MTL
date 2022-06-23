@@ -14,10 +14,11 @@ namespace MTL
 			{
 				Type = 0,
 				Identifier,
+				Symbol,
 				Value
 			}
 
-			public static TokenTypes TokenType { get; set; }
+			public TokenTypes TokenType { get; set; }
 
 			public string Value { get; set; }
 		}

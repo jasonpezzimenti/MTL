@@ -7,6 +7,7 @@
 			previous = "",
 			next = "",
 			character = "",
+			text = "",
 			input = "";
 		public static bool isInsideString,
 			isInsideScope,
@@ -52,7 +53,24 @@
 					if(isInsideString)
 					{
 						// If we find a double quote, we should consider this to be the end of the string.
-						
+						if(character == MTL.Symbols.DoubleQuote)
+						{
+							MTL.Tokens.Push(new MTL.Token()
+							{
+								TokenType = MTL.Token.TokenTypes.Value,
+								Value = text
+							});
+
+							MTL.Tokens.Push(new MTL.Token()
+							{
+								TokenType = MTL.Token.TokenTypes.Symbol,
+								Value = MTL.Symbols.DoubleQuote
+							});
+
+							isInsideString = false;
+							isExpectingScopeEnd = true;
+							isExpectingType = true;
+						}
 					}
 				}
 			}
