@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MTL": {
+      "commandName": "Project",
+      "commandLineArgs": "Template.mtl"
+    }
+  }
+}
