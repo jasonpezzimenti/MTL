@@ -10,13 +10,13 @@ namespace MTL
 	{
 		public struct Symbols
 		{
-			public string At = "@";
-			public string Hash = "#";
-			public string Asterisk = "*";
-			public string Hyphen = "-";
-			public string Plus = "+";
-			public string Colon = ":";
-			public string Semicolon = ";";
+			public static string At = "@";
+			public static string Hash = "#";
+			public static string Asterisk = "*";
+			public static string Hyphen = "-";
+			public static string Plus = "+";
+			public static string Colon = ":";
+			public static string Semicolon = ";";
 
 			public Symbols()
 			{

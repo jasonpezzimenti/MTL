@@ -1,0 +1,15 @@
+C:\Users\jason\source\repos\MTL\MTL\bin\Debug\net6.0\MTL.exe
+C:\Users\jason\source\repos\MTL\MTL\bin\Debug\net6.0\MTL.deps.json
+C:\Users\jason\source\repos\MTL\MTL\bin\Debug\net6.0\MTL.runtimeconfig.json
+C:\Users\jason\source\repos\MTL\MTL\bin\Debug\net6.0\MTL.dll
+C:\Users\jason\source\repos\MTL\MTL\bin\Debug\net6.0\MTL.pdb
+C:\Users\jason\source\repos\MTL\MTL\obj\Debug\net6.0\MTL.csproj.AssemblyReference.cache
+C:\Users\jason\source\repos\MTL\MTL\obj\Debug\net6.0\MTL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jason\source\repos\MTL\MTL\obj\Debug\net6.0\MTL.AssemblyInfoInputs.cache
+C:\Users\jason\source\repos\MTL\MTL\obj\Debug\net6.0\MTL.AssemblyInfo.cs
+C:\Users\jason\source\repos\MTL\MTL\obj\Debug\net6.0\MTL.csproj.CoreCompileInputs.cache
+C:\Users\jason\source\repos\MTL\MTL\obj\Debug\net6.0\MTL.dll
+C:\Users\jason\source\repos\MTL\MTL\obj\Debug\net6.0\refint\MTL.dll
+C:\Users\jason\source\repos\MTL\MTL\obj\Debug\net6.0\MTL.pdb
+C:\Users\jason\source\repos\MTL\MTL\obj\Debug\net6.0\MTL.genruntimeconfig.cache
+C:\Users\jason\source\repos\MTL\MTL\obj\Debug\net6.0\ref\MTL.dll
