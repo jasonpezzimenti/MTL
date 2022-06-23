@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MTL
 {
-	public class MTL
+	public partial class MTL
 	{
 		public class Token
 		{
